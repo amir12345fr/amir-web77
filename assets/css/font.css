@@ -1,0 +1,53 @@
+@font-face {
+    font-family:'t_font' ;
+    src: url('../font/Unique\ Bold_MRT.ttf');format:("truetype")
+}
+
+
+
+
+h1,h2,h3,h4,h5,p,span,a{
+
+
+font-family: "t_font";
+
+}
+
+
+
+
+.m1{
+
+
+    font-family: "t_font";
+
+}
+
+
+
+
+
+
+
+
+@media (min-width: 1200px) {
+    .responsive-font-example {
+      font-size: 35px;
+    }
+  }
+
+  @media (max-width: 1199.98px) {
+    .responsive-font-example {
+      font-size: 25px;
+    }
+}
+  
+
+
+
+
+
+
+
+
+
