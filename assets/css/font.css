@@ -15,6 +15,13 @@ font-family: "t_font";
 
 
 
+.ft2{
+
+font-size: 13px;
+
+}
+
+
 
 .m1{
 
@@ -27,21 +34,6 @@ font-family: "t_font";
 
 
 
-
-
-
-@media (min-width: 1200px) {
-    .responsive-font-example {
-      font-size: 35px;
-    }
-  }
-
-  @media (max-width: 1199.98px) {
-    .responsive-font-example {
-      font-size: 25px;
-    }
-}
-  
 
 
 
