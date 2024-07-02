@@ -33,6 +33,10 @@ font-size: 13px;
 
 
 
+.responsive-text {
+    font-size: 3.6vw;
+
+}
 
 
 
@@ -40,6 +44,56 @@ font-size: 13px;
 
 
 
+
+
+
+
+
+
+.mm5 {
+    font-size: 28px;
+    line-height: 1.5;
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+  }
+  
+  @media (max-width: 768px) {
+    .mm5 {
+      font-size: 18px;
+      max-width: 100%;
+      padding: 10px;
+    }
+  }
+  
+  @media (max-width: 480px) {
+    .mm5 {
+      font-size: 14px;
+    }
+  }
+
+
+p {
+    font-size: 16px;
+    line-height: 1.5;
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+  }
+  
+  @media (max-width: 768px) {
+    p {
+      font-size: 12px;
+      max-width: 100%;
+      padding: 10px;
+    }
+  }
+  
+  @media (max-width: 480px) {
+    p {
+      font-size: 10px;
+    }
+  }
 
 
 
