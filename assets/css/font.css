@@ -15,6 +15,98 @@ font-family: "t_font";
 
 
 
+.in-svg{
+
+  display:block;fill:currentColor
+
+}
+
+.wh-svg{
+
+  display: block; fill: currentColor
+
+}
+
+
+.tel-svg{
+
+  display:block;fill:currentColor
+
+}
+
+
+
+
+.icon{
+
+
+  display: flex; flex-wrap: wrap; align-items: center; justify-content: center;
+
+}
+
+
+.the-icons{
+
+
+  display: flex; justify-content: center;
+
+
+}
+
+
+.tel-i-1{
+
+  text-decoration:none;border:0;width:36px;height:36px;padding:2px;margin:5px;color:#11ace9;border-radius:50%;background-color:#0d2744;
+
+}
+
+
+
+.tel-i{
+
+
+  display: flex; flex-wrap:wrap; align-items: center; justify-content: center;
+
+}
+
+
+.wh-i{
+
+  text-decoration: none; border: 0; width: 36px; height: 36px; padding: 2px; margin: 5px; color: #11ff48; border-radius: 50%; background-color: #0d2744;
+
+}
+
+
+
+.in-i-1{
+
+
+  text-decoration:none;border:0;width:36px;height:36px;padding:2px;margin:5px;color:#e911a7;border-radius:50%;background-color:#0d2744;
+
+}
+
+
+
+
+.in-i{
+
+
+  display: flex; 
+  flex-wrap:wrap;
+   align-items: center;
+    justify-content: center;
+
+
+
+
+}
+
+
+
+
+
+
+
 .ft2{
 
 font-size: 13px;
