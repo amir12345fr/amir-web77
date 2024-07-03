@@ -18,6 +18,8 @@ font-family: "t_font";
 .ft2{
 
 font-size: 13px;
+position: relative;
+top: 5px;
 
 }
 
