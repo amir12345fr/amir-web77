@@ -170,6 +170,16 @@ top: 5px;
 
 
 
+  @media (max-width: 360px) {
+    .mm5 {
+      font-size: 11px;
+    }
+  }
+
+
+
+
+
 
 
 
@@ -233,13 +243,17 @@ p {
   
   @media (max-width: 480px) {
     p {
-      font-size: 10px;
+      font-size: 5px;
     }
   }
 
 
 
-
+  @media (max-width: 360px) {
+    p {
+      font-size: 5px;
+    }
+  }
 
 
 
