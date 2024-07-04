@@ -119,7 +119,7 @@ top: 5px;
 
 @media (max-width: 768px) {
   .ft2 {
-    font-size: 8px;
+    font-size: 12px;
   }
 }
 
@@ -127,7 +127,7 @@ top: 5px;
 
 @media (max-width: 480px) {
   .ft2 {
-    font-size: 8px;
+    font-size: 12px;
   }
 }
 
@@ -220,29 +220,6 @@ top: 5px;
 
 
 
-  .mm6 {
-    font-size: 18px;
-    line-height: 1.5;
-    max-width: 800px;
-    margin: 0 auto;
-    padding: 20px;
-  }
-  
-  @media (max-width: 768px) {
-    .mm6 {
-      font-size: 13px;
-      max-width: 100%;
-      padding: 10px;
-    }
-  }
-  
-  @media (max-width: 480px) {
-    .mm6 {
-      font-size: 13px;
-    }
-  }
-
-
 
 
 
@@ -262,7 +239,7 @@ p {
   
   @media (max-width: 768px) {
     p {
-      font-size: 9px;
+      font-size: 12px;
       max-width: 100%;
       padding: 9px;
     }
@@ -270,7 +247,7 @@ p {
   
   @media (max-width: 480px) {
     p {
-      font-size: 9px;
+      font-size: 12px;
     }
   }
 
