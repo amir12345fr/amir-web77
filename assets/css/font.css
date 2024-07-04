@@ -109,7 +109,7 @@ font-family: "t_font";
 
 .ft2{
 
-font-size: 13px;
+font-size: 11px;
 position: relative;
 top: 5px;
 
@@ -154,7 +154,7 @@ top: 5px;
   
   @media (max-width: 768px) {
     .mm5 {
-      font-size: 16px;
+      font-size: 14px;
       max-width: 100%;
       padding: 10px;
     }
@@ -162,9 +162,51 @@ top: 5px;
   
   @media (max-width: 480px) {
     .mm5 {
-      font-size: 16px;
+      font-size: 14px;
     }
   }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  .mm6 {
+    font-size: 18px;
+    line-height: 1.5;
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+  }
+  
+  @media (max-width: 768px) {
+    .mm6 {
+      font-size: 13px;
+      max-width: 100%;
+      padding: 10px;
+    }
+  }
+  
+  @media (max-width: 480px) {
+    .mm6 {
+      font-size: 13px;
+    }
+  }
+
+
+
 
 
 
