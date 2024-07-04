@@ -154,7 +154,7 @@ top: 5px;
   
   @media (max-width: 768px) {
     .mm5 {
-      font-size: 18px;
+      font-size: 16px;
       max-width: 100%;
       padding: 10px;
     }
@@ -162,7 +162,7 @@ top: 5px;
   
   @media (max-width: 480px) {
     .mm5 {
-      font-size: 18px;
+      font-size: 16px;
     }
   }
 
@@ -183,7 +183,7 @@ p {
   
   @media (max-width: 768px) {
     p {
-      font-size: 11px;
+      font-size: 10px;
       max-width: 100%;
       padding: 10px;
     }
@@ -191,7 +191,7 @@ p {
   
   @media (max-width: 480px) {
     p {
-      font-size: 11px;
+      font-size: 10px;
     }
   }
 
