@@ -167,6 +167,12 @@ top: 5px;
   }
 
 
+
+
+
+
+
+
 p {
     font-size: 16px;
     line-height: 1.5;
@@ -177,7 +183,7 @@ p {
   
   @media (max-width: 768px) {
     p {
-      font-size: 13px;
+      font-size: 11px;
       max-width: 100%;
       padding: 10px;
     }
@@ -185,7 +191,7 @@ p {
   
   @media (max-width: 480px) {
     p {
-      font-size: 13px;
+      font-size: 11px;
     }
   }
 
