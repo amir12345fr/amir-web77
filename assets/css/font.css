@@ -235,15 +235,15 @@ p {
   
   @media (max-width: 768px) {
     p {
-      font-size: 9px;
+      font-size: 10px;
       max-width: 100%;
-      padding: 10px;
+      padding: 9px;
     }
   }
   
   @media (max-width: 480px) {
     p {
-      font-size: 8px;
+      font-size: 9px;
     }
   }
 
@@ -251,7 +251,7 @@ p {
 
   @media (max-width: 360px) {
     p {
-      font-size: 6px;
+      font-size: 7px;
     }
   }
 
