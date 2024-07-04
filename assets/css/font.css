@@ -262,7 +262,7 @@ p {
   
   @media (max-width: 768px) {
     p {
-      font-size: 11px;
+      font-size: 9px;
       max-width: 100%;
       padding: 9px;
     }
@@ -270,7 +270,7 @@ p {
   
   @media (max-width: 480px) {
     p {
-      font-size: 11px;
+      font-size: 9px;
     }
   }
 
