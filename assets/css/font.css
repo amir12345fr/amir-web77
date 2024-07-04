@@ -109,11 +109,38 @@ font-family: "t_font";
 
 .ft2{
 
-font-size: 11px;
+font-size: 18px;
 position: relative;
 top: 5px;
 
 }
+
+
+
+@media (max-width: 768px) {
+  .ft2 {
+    font-size: 11px;
+  }
+}
+
+
+
+@media (max-width: 480px) {
+  .ft2 {
+    font-size: 9px;
+  }
+}
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -154,7 +181,7 @@ top: 5px;
   
   @media (max-width: 768px) {
     .mm5 {
-      font-size: 14px;
+      font-size: 16px;
       max-width: 100%;
       padding: 10px;
     }
@@ -162,7 +189,7 @@ top: 5px;
   
   @media (max-width: 480px) {
     .mm5 {
-      font-size: 14px;
+      font-size: 16px;
     }
   }
 
@@ -172,7 +199,7 @@ top: 5px;
 
   @media (max-width: 360px) {
     .mm5 {
-      font-size: 11px;
+      font-size: 15px;
     }
   }
 
@@ -235,7 +262,7 @@ p {
   
   @media (max-width: 768px) {
     p {
-      font-size: 10px;
+      font-size: 11px;
       max-width: 100%;
       padding: 9px;
     }
@@ -243,7 +270,7 @@ p {
   
   @media (max-width: 480px) {
     p {
-      font-size: 9px;
+      font-size: 11px;
     }
   }
 
@@ -251,7 +278,7 @@ p {
 
   @media (max-width: 360px) {
     p {
-      font-size: 7px;
+      font-size: 11px;
     }
   }
 
