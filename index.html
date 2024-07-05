@@ -32,6 +32,16 @@
 
 
 
+<link rel="stylesheet" href="assets/css/not.css">
+
+
+
+
+
+
+
+
+
 
 
 
@@ -884,6 +894,67 @@
         </tbody>
       </table>
 
+
+
+
+
+
+
+
+
+      <div class="notification-container" style="display: none;">
+
+      <div class="notification-container " > 
+        <div class="notification-card"> 
+        <div class="notification-header">
+         <h6  style="color: #fff;text-align: center;margin: 0px 0px 0px 40px;"><span>آیا نیاز به مشاوره دارید ؟</span></h6> 
+        <button class="close-btn">×</button>
+         </div>
+        
+         <div class="notification-body">
+         <div class="notification-icon"> 
+        <i class="fas fa-envelope"></i> 
+        </div> 
+        <div class="notification-content"> 
+      <button class="btn btn-success" style="margin: 0px 0px 0px 90px;width: 70px;">پیام </button>        </div>
+         </div> 
+         </div>
+         </div> 
+        </div> 
+        </div>
+
+<script>
+
+
+  // انتظار 10 ثانیه
+setTimeout(function() {
+  // نمایش دادن دیو با کلاس "notification-container"
+  document.querySelector('.notification-container').style.display = 'block';
+}, 10000);
+</script>
+
+
+        <script>
+        
+         const closeButton = document.querySelector('.close-btn'); const notificationCard = document.querySelector('.notification-card'); closeButton.addEventListener('click', () => { notificationCard.style.display = 'none'; }); 
+        
+        
+        </script>
+        
+
+
+
+
+
+
+
+
+
+
+
+
+
+      
 
       <p data-aos="fade-up" class="alert alert-warning" role="alert" align="center"> میانگین تعداد روز های انجام سفارشات
         شما =1.9</p>
