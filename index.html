@@ -1,1154 +1,171 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-  <meta charset="utf-8">
-  <meta content="width=device-width, initial-scale=1.0" name="viewport">
-  <title>تابلو سازی درخشان تابلو | صفحه اصلی</title>
-  <meta content="" name="description">
-  <meta content="" name="keywords">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Beautiful Notification</title>
+  <style>
+    .notification-container {
+      position: fixed;
+      top: 20px;
+      right: 20px;
+      z-index: 9999;
+      width: 100%;
+      max-width: 300px;
+    }
 
-  <!-- Favicons -->
-  <link href="assets/img/favicon.png" rel="icon">
-  <link href="assets/img/apple-touch-icon.png" rel="apple-touch-icon">
+    .notification-card {
+      background-color: #fff;
+      border-radius: 8px;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+      animation: slide-in 0.3s ease-in-out;
+    }
 
-  <!-- Fonts -->
-  <link href="https://fonts.googleapis.com" rel="preconnect">
-  <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
-  <link
-    href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,300;1,400;1,500;1,600;1,700;1,800&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Raleway:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
-    rel="stylesheet">
+    .notification-header {
+      background-color: #007bff;
+      color: #fff;
+      padding: 12px 16px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-top-left-radius: 8px;
+      border-top-right-radius: 8px;
+    }
 
-  <!-- Vendor CSS Files -->
-  <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-  <link href="assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+    .notification-header h3 {
+      margin: 0;
+      font-size: 16px;
+    }
 
-  <link href="assets/vendor/aos/aos.css" rel="stylesheet">
-  <link href="assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
-  <link href="assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
+    .close-btn {
+      background-color: transparent;
+      border: none;
+      color: #fff;
+      font-size: 20px;
+      cursor: pointer;
+    }
 
+    .close-btn:hover {
+      color: #f1f1f1;
+    }
 
+    .notification-body {
+      padding: 16px;
+      display: flex;
+      align-items: center;
+    }
 
+    .notification-icon {
+      font-size: 24px;
+      color: #007bff;
+      margin-right: 12px;
+    }
 
+    .notification-content p {
+      margin: 0;
+    }
 
+    .time-stamp {
+      font-size: 12px;
+      color: #6c757d;
+    }
 
-<link rel="stylesheet" href="assets/css/not.css">
+    .notification-footer {
+      border-top: 1px solid #e9ecef;
+      padding: 12px 16px;
+      text-align: right;
+    }
 
+    .view-btn {
+      background-color: #007bff;
+      color: #fff;
+      border: none;
+      border-radius: 4px;
+      padding: 8px 12px;
+      font-size: 14px;
+      cursor: pointer;
+    }
 
+    @keyframes slide-in {
+      0% {
+        transform: translateX(100%);
+        opacity: 0;
+      }
+      100% {
+        transform: translateX(0);
+        opacity: 1;
+      }
+    }
 
+    @media (max-width: 480px) {
+      .notification-container {
+        top: 10px;
+        right: 10px;
+        max-width: 90%;
+      }
 
+      .notification-header h3 {
+        font-size: 14px;
+      }
 
+      .close-btn {
+        font-size: 18px;
+      }
 
+      .notification-body {
+        padding: 12px;
+      }
 
+      .notification-icon {
+        font-size: 20px;
+        margin-right: 8px;
+      }
 
+      .notification-content p {
+        font-size: 14px;
+      }
 
+      .time-stamp {
+        font-size: 11px;
+      }
 
-
-
-  <link rel="stylesheet" href="assets/css/font.css">
-
-  <!-- Main CSS File -->
-  <link href="assets/css/main.css" rel="stylesheet">
-
-  <!-- =======================================================
-  * Template Name: Eterna
-  * Template URL: https://bootstrapmade.com/eterna-free-multipurpose-bootstrap-template/
-  * Updated: Jun 14 2024 with Bootstrap v5.3.3
-  * Author: BootstrapMade.com
-  * License: https://bootstrapmade.com/license/
-  ======================================================== -->
+      .view-btn {
+        padding: 6px 10px;
+        font-size: 12px;
+      }
+    }
+  </style>
 </head>
-
-<body class="index-page">
-
-  <header id="header" class="header sticky-top">
-
-    <div class="topbar d-flex align-items-center">
-      <div class="container d-flex justify-content-center justify-content-md-between">
-        <div class="contact-info d-flex align-items-center">
-        <!--   <i class="bi  d-flex align-items-center"><a href="mailto:contact@example.com"><p>contact@example.com</p></a></i>-->
-          <i class="bi d-flex align-items-center ms-4">901 061 0627</i>
-          <button type="button" style="margin: 0px 0px 0px 30px;" id="callBtn2" class="btn btn-warning ">تماس</button>
-        </div>
-        <div class="social-links d-none d-md-flex align-items-center">
-          <a href="#" class="twitter"><p class="bi bi-telegram" title="صفحه تلگرام ما"></p></a>
-          <a href="#" class="facebook"><p class="bi bi-whatsapp" title="صفحه واستاپ ما"></p></a>
-          <a href="#" class="instagram"><p class="bi bi-instagram" title="صفحه اینستاگرام ما"></p></a>
-        </div>
-      </div>
-    </div><!-- End Top Bar -->
-
-    <div class="branding">
-
-      <div class="container position-relative d-flex align-items-center justify-content-between">
-        <a href="index.html" class="logo d-flex align-items-center">
-          <!-- Uncomment the line below if you also wish to use an image logo -->
-          <!-- <img src="assets/img/logo.png" alt=""> -->
-          <h5 class="sitename">| Derakhshan-Tablo </h5>
-        </a>
-
-        <nav id="navmenu" class="navmenu">
-          <ul>
-            <li> <a href="index.html" class="active">
-                <p>صفحه اصلی</p>
-              </a></li>
-            <li><a href="about.html">
-                <p>درباره ما</p>
-              </a></li>
-            <li><a href="services.html">
-                <p>خدمات ما</p>
-              </a></li>
-            <li><a href="portfolio.html">
-                <p>نمونه کار ها</p>
-              </a></li>
-
-
-
-
-            <li><a href="contact.html">
-                <p>ارتباط با ما</p>
-              </a></li>
-          </ul>
-          <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>
-        </nav>
-
-      </div>
-
-    </div>
-
-  </header>
-
-  <main class="main">
-
-    <!-- Hero Section -->
-    <section id="hero" class="hero section">
-
-      <div id="hero-carousel" class="carousel slide carousel-fade" data-bs-ride="carousel" data-bs-interval="5000">
-
-        <div class="carousel-item active">
-          <img src="assets/img2/chan.jpg" alt="خدمات تابلوسازی درخشان تابلو(slider pic1)">
-          <div class="carousel-container">
-            <h2 align="center"> <span class="mm5">درخشان تابلو , خدمات  تابلوسازی در شهر اراک</span></h2>
-            <p class="responsive-paragraph" align="center">به کارگاه تابلوسازی درخشان تابلو , خدمات تابلو سازی در اراک خوش امدید ,در جایی که هنر و
-              خلاقیت دست به دست هم داده است , تا خدمات  با کیفیتی  را به شما مشتریان عزیز تحویل دهیم</p>
-            <a href="contact.html" class="btn-get-started">
-              <h6 class="ft2"  style="color: #fff;"><span >سفارش تابلو</span></h6>
-            </a>
-          </div>
-        </div><!-- End Carousel Item -->
-
-        <div class="carousel-item">
-          <img src="assets/img2/chelnyum.jpg" alt="خدمات تابلوسازی درخشان تابلو(slider pic2)">
-          <div class="carousel-container">
-            <h2 align="center"> <span class="mm5">خدمات درخشان تابلو</span></h2>
-            <p align="center"> ساخت انواع تابلو های تبلیغاتی, چنلیوم ,تابلو روان , تابلو نعون ,  ساخت انواع تابلو های فانتزی(گیمینگ ) , ساخت انواع تابلو های ال ای دی و طراحی نما و... در درخشان تابلو</p>
-            <a href="contact.html" class="btn-get-started">
-              <h6 class="ft2" style="color: #fff;"><span>سفارش تابلو</span></h6>
-            </a>
-
-          </div>
-        </div><!-- End Carousel Item -->
-
-
-
-
-        <div class="carousel-item">
-          <img src="assets/img2/neon-sign.jpg" alt="خدمات تابلوسازی درخشان تابلو(slider pic3)">
-          <div class="carousel-container">
-            <h2 align="center"> <span class="mm5">تابلو سازی درخشان تابلو</span></h2>
-            <p align="center">
-              از خیال تا واقعیت، با درخشان تابلو, جایی که هنر و تکنولوژی به یکدیگر می‌رسند
-
-            </p>
-            <a href="contact.html" class="btn-get-started">
-              <h6 class="ft2" style="color: #fff;"><span>سفارش تابلو</span></h6>
-            </a>
-
-          </div>
-        </div><!-- End Carousel Item -->
-
-
-
-        <div class="carousel-item">
-          <img src="assets/img2/22.jpg" alt="خدمات تابلوسازی درخشان تابلو(slider pic4)">
-          <div class="carousel-container">
-            <h2 align="center"> <span class="mm5">ساخت آثار هنری استثنایی </span></h2>
-            <p align="center">با بهره گیری از روش‌های نوین و استفاده از مواد با کیفیت و بهترین ابزار های تابلو سازی، هدف اصلی تابلوسازی درخشان تابلو,
-              تولید تابلوهایی است که آثار زیبا و جذابی را به وجود آورند و با هر نگاه، شما را به لذت و شگفتی فراخوانند.
-            </p>
-            <a href="contact.html" class="btn-get-started">
-              <h6 class="ft2" style="color: #fff;"><span>سفارش تابلو</span></h6>
-            </a>
-
-          </div>
-        </div><!-- End Carousel Item -->
-
-
-
-        <div class="carousel-item">
-          <img src="assets/img2/images.jpg" alt="خدمات تابلوسازی درخشان تابلو(slider pic5)">
-          <div class="carousel-container">
-            <h2 align="center"> <span class="mm5">دانش و تخصص</span></h2>
-            <p align="center">با توجه به دقت , دانش و تخصص تیم درخشان تابلو، مطمئن باشید که تابلوهایی بی‌ نظیر و منحصربه‌ فرد را
-             . برای شما ایجاد خواهیم کرد</p>
-            <a href="contact.html" class="btn-get-started">
-              <h6 class="ft2" style="color: #fff;"><span>سفارش تابلو</span></h6>
-            </a>
-
-          </div>
-        </div><!-- End Carousel Item -->
-
-        <a class="carousel-control-prev" href="#hero-carousel" role="button" data-bs-slide="prev">
-          <span class="carousel-control-prev-icon bi bi-chevron-left" aria-hidden="true"></span>
-        </a>
-
-        <a class="carousel-control-next" href="#hero-carousel" role="button" data-bs-slide="next">
-          <span class="carousel-control-next-icon bi bi-chevron-right" aria-hidden="true"></span>
-        </a>
-
-      </div>
-      <br><br><br><br>
-
-
-    </section><!-- /Hero Section -->
-
-
-
-
-
-    <h2 data-aos="fade-up" align="center" class="alert alert-secondary"><span class="mm5">خدمات تابلوسازی درخشان تابلو</span></h2>
-    <p data-aos="fade-up" align="center" class="alert alert-primary">  طراحی و ساخت هر گونه تابلو تبلیغاتی با کیفیت و قیمت مناسب با شرایط ویژه و اقساتی</p>
-    <p data-aos="fade-up" align="center" class="alert alert-primary">فروش هرگونه تابلو تبلیغاتی با شرایطی ویژه و به صورت اقساتی در درخشان تابلو.  %100 تضمینی</p>
-
-
-
-
-
-
-
-
-
-
-
-
-    <br><br><br><br>
-    <!-- About Section -->
-    <section id="about" class="section about">
-
-      <div class="container">
-
-        <div class="row gy-4">
-          <div class="col-lg-6 order-1 order-lg-2">
-            <img data-aos="fade-up" src="assets/img2/pngegg (1).png" width="500" class="img-fluid"
-              alt="خدمات تابلوسازی درخشان تابلو(pic title1)">
-            <br><br><br>
-
-          </div>
-          <div class="col-lg-6 order-2 order-lg-1 content">
-            <h4 align="right" class="container" data-aos="fade-up">
-              <span class="mm5"> خدمات تابلو سازی درخشان تابلو , تابلوسازی شهر اراک</span>
-            </h4>
-            <br>
-            <p data-aos="fade-up" class="alert alert-primary" role="alert" align="right" class="fst-italic">
-    درخشان تابلو یک مرجع خدمات تابلو سازی با تجربه در کلانشهر اراک میباشد , که در زمینه طراحی و ساخت انواع تابلو های برقی تجاری , تبلیغاتی , صنعتی و شهری فعالیت میکند که جزو بهتربن تابلو سازی ها در ایران شناخته و فعالیت میکند. با تیمی متخصص و مجرب، درخشان تابلو قادر هست به سفارشات مشتریان در این زمینه پاسخ دهد و محصولات باکیفیت و طراحی جذاب را ارائه دهد
- </p>
-
-
-
-
-            <hr><br>
-            <h4 data-aos="fade-up" align="right"><span class="mm5">خدمات و حوضه های فعالیت درخشان تابلو</span>
-              <br><br>
-            </h4>
-            <p data-aos="fade-up" class="bi bi-check2-all alert alert-success" align="right">طراحی و ساخت انواع تابلو
-              چلنیوم</p>
-
-            <p data-aos="fade-up" class="bi bi-check2-all alert alert-success" align="right">(led) ساخت تابلو ال ای دی
-            </p>
-
-            <p data-aos="fade-up" class="bi bi-check2-all alert alert-success" align="right">طراحی و ساخت تابلو روان
-              %100 تضمینی</p>
-
-            <p data-aos="fade-up" class="bi bi-check2-all alert alert-success " align="right">ساخت تابلو گیمینگ</p>
-            <p data-aos="fade-up" class="bi bi-check2-all alert alert-success " align="right">ساخت تابلو نعون فلکسی با
-              کیفیت</p>
-            <p data-aos="fade-up" class="bi bi-check2-all alert alert-success " align="right">ساخت تابلو نعونی</p>
-            <p data-aos="fade-up" class="bi bi-check2-all alert alert-success " align="right">طراحی نما</p>
-            <p data-aos="fade-up" class="bi bi-check2-all alert alert-success " align="right">طراحی تابلو مغازه</p>
-            <p data-aos="fade-up" class="bi bi-check2-all alert alert-success " align="right">ساخت تابلو ال ای دی ثابت
-            </p>
-            <p data-aos="fade-up" class="bi bi-check2-all alert alert-success " align="right">طراحی و ساخت تابلو
-              تبلیغاتی</p>
-            <p data-aos="fade-up" class="bi bi-check2-all alert alert-success " align="right"> طراحی و ساخت انواع تابلو
-            </p>
-            <p data-aos="fade-up" class="bi bi-check2-all alert alert-success " align="right"> ساخت تابلو هوشمند</p>
-            <p data-aos="fade-up" class="bi bi-check2-all alert alert-success " align="right"> ساخت هرگونه تابلو های
-              فانتزی</p>
-
-            <p data-aos="fade-up" class="bi bi-check2-all alert alert-success " align="right"> ساخت تابلو برجسته</p>
-            <p data-aos="fade-up" class="bi bi-check2-all alert alert-success " align="right"> ساخت و نصب تابلو چلنیوم
-            </p>
-
-
-
-
-
-            <hr>
-
-            <p data-aos="fade-up" class="alert alert-primary " role="alert" align="right">
-              هدف درخشان تابلو در این است که تابلو هایی خلق کنیم که علاوه بر جذابیت بصری ,کارآمدی و زیبایی  تاثیر گذاری لازم را برای کسب و
-              کار شما داشته باشد.از تابلو های چنلیومی گرفته تا تابلو های فانتزی (اشکالی , گیمینگ) ,  و نور پردازی داخلی , همگی طراحی و
-              ساخته میشوند تا به بهترین نحو نیاز های شما را براورده کنند
-            </p>
-          </div>
-        </div>
-
-      </div>
-
-    </section><!-- /About Section -->
-
-    <br><br><br><br>
-    <div align="right" class="container">
-
-      <center> <br><img data-aos="fade-up" src="assets/img2/checkout_2435292.png" width="150"
-          alt="خدمات تابلوسازی درخشان تابلو(pic D-C title3)"></center>
-      <br>
-      <h6 align="center" data-aos="fade-up" class="alert alert-primary " role="alert"><span class="mm5"> . مشاغلی که بیشترین سر کار را با
-        تابلو سازی ها دارند</span></h6>
-      <br>
-      <p data-aos="fade-up" class="alert alert-secondary" role="alert">تغریبا همه مشاغل نیاز به یک اثر  " تابلو "  زیبا و جذب کننده و خواص برای کسب و کارشان دارند ولی این مشاغل بیشترین   سر کار  را با ما دارند</p>
-
-      <div align="center">
-        <p data-aos="fade-up" class="alert alert-secondary" role="alert">تابلو سازی(خدمات کامپیوتری)</p>
-
-        <p data-aos="fade-up" class="alert alert-secondary" role="alert">تابلوسازی خودرو(اتوگالری)</p>
-
-        <p data-aos="fade-up" class="alert alert-secondary" role="alert"> تابلوسازی(فروشگاه های مواد غذایی)</p>
-        <p data-aos="fade-up" class="alert alert-secondary" role="alert"> تابلوسازی(لوازم التحریر)</p>
-        <p data-aos="fade-up" class="alert alert-secondary" role="alert">تابوسازی(شرینی پزی)</p>
-        <p data-aos="fade-up" class="alert alert-secondary" role="alert">تابلوسازی(اسباب بازی فروشی)</p>
-        <p data-aos="fade-up" class="alert alert-secondary" role="alert">تابلوسازی(بستنی فروشی)</p>
-        <p data-aos="fade-up" class="alert alert-secondary" role="alert">تابلوسازی(موبایل فروشی و لوازم جانبی)</p>
-        <p data-aos="fade-up" class="alert alert-secondary" role="alert">تابلو سازی(لوازم بهداشتی)</p>
-        <p data-aos="fade-up" class="alert alert-secondary" role="alert">تابلوسازی (تهیه غذا و رستوران)</p>
-        <p data-aos="fade-up" class="alert alert-secondary" role="alert">تابلو سازی(فست فود های کوچک)</p>
-        <p data-aos="fade-up" class="alert alert-secondary" role="alert">تابلوسازی(لوازم ورزشی)</p>
-        <p data-aos="fade-up" class="alert alert-secondary" role="alert">تابلوسازی(تسیسات)</p>
-        <p data-aos="fade-up" class="alert alert-secondary" role="alert">تابلوسازی(پیرایش گاه)</p>
-        <p data-aos="fade-up" class="alert alert-secondary" role="alert">تابلوسازی(سوپر پروتیین )</p>
-        <p data-aos="fade-up" class="alert alert-secondary" role="alert">تابلوسازی(مراکز دولتی )</p>
-        <p data-aos="fade-up" class="alert alert-secondary" role="alert">تابلوسازی(لوازم خانگی )</p>
-        <p data-aos="fade-up" class="alert alert-secondary" role="alert">...............و دیگر اشغال</p>
-      </div>
-    </div>
-
-
-    <br><br><br><br><br><br><br><br>
-
-    <div class="container alert alert-warning" role="alert">
-      <center> <img data-aos="fade-up" src="assets/img2/fluorescent_1310648.png" width="45"
-          aalt="خدمات تابلوسازی درخشان تابلو(tip)"></center>
-      <br>
-      <p data-aos="fade-up" align="center">برای اینکه بتوانید یک کسب کار با محیط جذاب و مشتری پستد داشته باشید , تا نسبت
-        به رقبا متمایز تر ضاهر شوید , نیاز به تابلویی زیبا و متناسب با کسب و کارتان دارید تا همواره در آن پیشرفت کنید
-      </p>
-    </div>
-
-
-
-
-
-
-<br>
-
-
-    <center>
-      <div class="w3-content" style="max-width:400px ;position: relative;right: 0px;" data-aos="fade-up">
-        
-      
-          
-        <img class="mySlides m-slides img-fluid" src="assets/img2/Untitled-2.jpg" >
-        <img class="mySlides m-slides img-fluid" src="assets/img2/Untitled-3.jpg" >
-        <img class="mySlides m-slides img-fluid" src="assets/img2/Untitled-42.jpg" >
-        <img class="mySlides m-slides img-fluid" src="assets/img2/Untitled-7.jpg" >
-      
-      </div>
-      </center>
-      
-      
-      
-      <script>
-        var slideIndex = 0;
-        carousel();
-        
-        function carousel() {
-          var i;
-          var x = document.getElementsByClassName("mySlides");
-          for (i = 0; i < x.length; i++) {
-            x[i].style.display = "none"; 
-          }
-          slideIndex++;
-          if (slideIndex > x.length) {slideIndex = 1} 
-          x[slideIndex-1].style.display = "block"; 
-          setTimeout(carousel, 2200); 
-        }
-       </script>
-
-
-
-
-
-
-    <!-- Services Section -->
-    <br><br><br><br><br>
-    <h4 data-aos="fade-up" class="alert alert-primary responsive-font-example" role="alert" align="center"><span class="mm5">خدمات
-        درخشان تابلو</span><img src="assets/img2/fg3.png" width="70" alt="خدمات تابلوسازی درخشان تابلو(servic)"></h4>
-
-    <section id="services" class="section services">
-
-      <div class="container">
-
-        <div class="row gy-4">
-
-          <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="100">
-            <div class="service-item  position-relative">
-              <img src="assets/img2/advertising-stand_9175126.png" style="position: relative;bottom: 30px;" width="80"
-                alt="خدمات تابلوسازی درخشان تابلو(ساخت انواع تابلو های برقی)">
-              <div>
-                <i></i>
-              </div>
-              <a href="#" class="stretched-link">
-                <h5><span class="mm5">ساخت و طراحی انواع تابلو های تبلیغاتی </span></h5>
-              </a>
-              <p>ساخت و تولید انواع تابلو های تبلیغاتی با شرایط و قیمتی مناسب</p>
-            </div>
-          </div><!-- End Service Item -->
-
-          <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="200">
-            <div class="service-item position-relative">
-              <img src="assets/img2/lifi_4325109.png" style="position: relative;bottom: 30px;" width="80"
-                alt="خدمات تابلوسازی درخشان تابلو(ساخت و طراحی تابلو نعون)">
-
-
-              <div>
-                <i></i>
-              </div>
-              <a href="#" class="stretched-link">
-                <h5><span class="mm5">ساخت و طراحی تابلو (نعون)</span></h5>
-              </a>
-              <p>ساخت تابلو های نعونی با اشکال مخطلف و زیبا و طراحی نما</p>
-            </div>
-          </div><!-- End Service Item -->
-
-          <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="300">
-            <div class="service-item position-relative">
-              <img src="assets/img2/presentation_16686219.png" style="position: relative;bottom: 30px;" width="80"
-                alt="خدمات تابلوسازی درخشان تابلو(ساخت و تولسد انواع تابلو روان)">
-              <div>
-                <i></i>
-              </div>
-              <a href="#" class="stretched-link">
-                <h5><span class="mm5">ساخت و تولید انواع تابلو روان </span></h5>
-              </a>
-              <p>تولید انواع تابلو روان با رنگ ها و اشکال مخطلف , برنامه نویسی شده و هوشمند</p>
-            </div>
-          </div><!-- End Service Item -->
-
-          <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="400">
-            <div class="service-item position-relative">
-              <img src="assets/img2/fluorescent_1310648.png" style="position: relative;bottom: 30px;" width="80"
-                alt="خدمات تابلوسازی درخشان تابلو(ساخت و طراحی انواع تابلو چنلیوم)">
-              <div class="">
-                <i class=""></i>
-              </div>
-              <a href="#" class="stretched-link">
-                <h5><span class="mm5">ساخت انواع تابلو (چنلیوم)</span></h5>
-              </a>
-              <p>تولید و ساخت انواع تابلو های چنلیوم (باکس) و (الماسی) و(حروف برجسته) و......... با ابعاد و سایز های
-                متفاوت برای هر نوع کسب و کار</p>
-              <a href="#" class="stretched-link"></a>
-            </div>
-          </div><!-- End Service Item -->
-
-          <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="500">
-            <div class="service-item position-relative">
-              <img src="assets/img2/led-light_6080765.png" style="position: relative;bottom: 30px;" width="80"
-                alt="خدمات تابلوسازی درخشان تابلو(ساخت و طراحی تابلو ال ای دی)">
-              <div class="">
-                <i class=" "></i>
-              </div>
-              <a href="#" class="stretched-link">
-                <h5><span class="mm5">ساخت و طراحی تابو (ال ای دی)</span></h5>
-              </a>
-              <p>تولید و ساخت انواع تابلو ال ای دی (چشمک زن) , (پلکسی) , (تصویری)  , (تمام رنگ) در درخشان تابلو, زیر قیمت بازار</p>
-              <a href="#" class="stretched-link"></a>
-            </div>
-          </div><!-- End Service Item -->
-
-          <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="600">
-            <div class="service-item position-relative">
-              <img src="assets/img2/protection_4362477.png" style="position: relative;bottom: 30px;" width="80"
-                alt="خدمات تابلوسازی درخشان تابلو(ساخت و طراحی انواع تابلو های گیمینگ (فانتزی))">
-              <div class="">
-                <i></i>
-              </div>
-              <a href="#" class="stretched-link">
-
-                <h5><span class="mm5">ساخت و طراحی تابلو های اشکالی (گیمینگ) , (فانتزی)</span></h5>
-              </a>
-              <p>ساخت هر گونه تابلو های فانتزی (گیمینگ) متناسب با علاقه و سلیقه شما با کمترین قیمت</p>
-              <a href="#" class="stretched-link"></a>
-            </div>
-          </div><!-- End Service Item -->
-
-        </div>
-
-      </div>
-
-    </section><!-- /Services Section -->
-
-
-    <br><br><br><br><br>
-
-
-    <h4 data-aos="fade-up" class="alert alert-primary" role="alert" align="center"><span class="mm5">مراحل ساخت تابلو در (درخشان
-        تابلو) تا اجرا</span></h4>
-
-
-
-
-
-    <section id="hero" class="hero section">
-
-      <div id="hero-carousel" class="carousel slide carousel-fade" data-bs-ride="carousel" data-bs-interval="5000">
-
-
-
-        <br><br><br>
-
-        <center><img src="assets/img2/chelnyum.jpg" data-aos="fade-up" width="5"
-            alt="خدمات تابلوسازی درخشان تابلو(مراحل ساخت تابلو تا اجرا)"></center>
-        <div class="featured container">
-
-          <div class="row gy-4">
-
-            <div class="col-lg-4 d-flex" data-aos="fade-up" data-aos-delay="100">
-
-              <div class="featured-item position-relative">
-
-                <center>
-                  <div class="icon"><i class="bi bi-broadcast icon"></i></div>
-                  <h4 align="center"><a href=""  class="stretched-link"><span class="mm5">سفارش تابلو</span></a></h4>
-
-                  <p>سفارش هر گونه تابلو از جانب شما برای ساخت</p>
-                </center>
-              </div>
-            </div><!-- End Featured Item -->
-
-            <div class="col-lg-4 d-flex" data-aos="fade-up" data-aos-delay="200">
-              <div class="featured-item position-relative">
-                <center>
-                  <div class="icon"><i class="bi bi-calendar4-week icon"></i></div>
-                  <h4><a href="" class="stretched-link"><span class="mm5"> طراحی و ساخت</span></a></h4>
-                  <p> اندازه گیری دقیق ابعاد تابلو برای ساخت و طراحی, با بهترین ابزار ها </p>
-                </center>
-              </div>
-            </div><!-- End Featured Item -->
-
-            <div class="col-lg-4 d-flex" data-aos="fade-up" data-aos-delay="300">
-              <div class="featured-item position-relative">
-                <center>
-                  <div class="icon"><i class="bi bi-bounding-box-circles icon"></i></div>
-                  <h4><a href="" class="stretched-link"><span class="mm5">نصب و اجرا</span></a></h4>
-                  <p>بعد از اتمام ساخت و طراحی تابلو , ما تابلو را با بهترین روش برای شما نصب میکنیم</p>
-                </center>
-              </div>
-            </div><!-- End Featured Item -->
-
-          </div>
-
-        </div>
-
-    </section><!-- /Hero Section -->
-
-
-
-
-
-
-
-
-
-    <br><br><br><br><br><br><br><br><br><br><br><br><br><br>
-    <center>
-      <h5 data-aos="fade-up" class="alert alert-primary" role="alert"><img src="assets/img2/protection_4362477.png"
-          width="30" alt="خدمات تابلوسازی درخشان تابلو(خدمات ویژه درخشان تابلو)"><span class="mm5">......خدمات ویژه درخشان
-          تابلو</span></h5>
-    </center>
-    <p data-aos="fade-up" class="alert alert-warning" role="alert" align="center">خدمات ویژه ما شامل طراحی سفارشی،
-      استفاده از مواد با کیفیت بالا , ضمانت قیمت و کالا , پشتیبانی و نصب محصول و ارائه راهکارهای نوین برای جلب توجه و
-      تبلیغات موثر می‌باشد.</p>
-    <br>
-    <section id="hero" class="hero section">
-
-      <div id="hero-carousel" class="carousel slide carousel-fade" data-bs-ride="carousel" data-bs-interval="5000">
-
-
-
-        <br><br><br>
-
-        <center><img src="assets/img2/chan.jpg" data-aos="fade-up" width="5" alt=""
-            alt="خدمات تابلوسازی درخشان تابلو(خدمات ویژه درخشان تابلو)"></center>
-        <div class="featured container">
-
-          <div class="row gy-4">
-
-            <div class="col-lg-4 d-flex" data-aos="fade-up" data-aos-delay="100">
-              <div class="featured-item position-relative">
-                <center>
-                  <div class="icon"><i class="bi bi-bounding-box-circles icon"></i></div>
-                  <h4 align="center"><a href="" class="stretched-link"><span class="mm5">پیشتیبانی محصول</span></a></h4>
-                  <p>پشتیبانی و ضمانت محصول برای مشتریان درخشان تابلو</p>
-                </center>
-              </div>
-            </div><!-- End Featured Item -->
-
-            <div class="col-lg-4 d-flex" data-aos="fade-up" data-aos-delay="200">
-              <div class="featured-item position-relative">
-                <center>
-                  <div class="icon"><i class="bi bi-calendar4-week icon"></i></div>
-                  <h4><a href="" class="stretched-link"><span class="mm5">ساخت اختصاصی تابلو</span></a></h4>
-                  <p>طراحی و ساخت تابلو اختصاصی  , مطابق با سلیقه شما در درخشان تابلو</p>
-                </center>
-              </div>
-            </div><!-- End Featured Item -->
-
-            <div class="col-lg-4 d-flex" data-aos="fade-up" data-aos-delay="300">
-              <div class="featured-item position-relative">
-                <center>
-                  <div class="icon"><i class="bi bi-broadcast icon"></i></div>
-                  <h4><a href="" class="stretched-link"><span class="mm5">تضمین محصول و قیمت</span></a></h4>
-                  <p>
-                    ما بهترین قیمت و با کیفیت ترین کار ها را با استفاده از بهترین لوازم برقی تابلو سازی در اختیار شما
-                    قرار میدهیم
-                  
-                  </p>
-                </center>
-              </div>
-            </div><!-- End Featured Item -->
-
-          </div>
-
-        </div>
-
-    </section><!-- /Hero Section -->
-
-    <br><br><br><br><br><br><br><br>
-
-    <!-- Stats Section -->
-
-    <section id="stats" class="stats section">
-
-      <div class="container" data-aos="fade-up" data-aos-delay="100">
-
-        <div class="row gy-4">
-
-
-
-          <div class="col-lg-3 col-md-6">
-            <div class="stats-item">
-              <i class="bi bi-journal-richtext"></i>
-              <span  data-purecounter-start="0" data-purecounter-end="288" data-purecounter-duration="3" class="purecounter mm5"></span>
-              <p><strong>پروژه های انجام شده</strong> </p>
-            </div>
-          </div><!-- End Stats Item -->
-
-
-
-
-          <div class="col-lg-3 col-md-6">
-            <div class="stats-item">
-              <i class="bi bi-emoji-smile"></i>
-              <span data-purecounter-start="0" data-purecounter-end="286" data-purecounter-duration="3"  class="purecounter mm5"></span>
-              <p><strong>تعداد رضایت های مشتریان</strong> </p>
-            </div>
-          </div><!-- End Stats Item -->
-
-     
-
-          <div class="col-lg-3 col-md-6">
-            <div class="stats-item">
-              <i class="bi bi-headset"></i>
-              <span data-purecounter-start="0" data-purecounter-end="24" data-purecounter-duration="3" class="purecounter mm5"></span>
-              <p><strong>ساعات پشتیبانی</strong> </p>
-            </div>
-          </div><!-- End Stats Item -->
-
-          <div class="col-lg-3 col-md-6">
-            <div class="stats-item">
-              <i class="bi bi-people"></i>
-              <span data-purecounter-start="0" data-purecounter-end="84" data-purecounter-duration="3" class="purecounter mm5"></span>
-              <p><strong>مشتریان ثابت</strong> </p>
-            </div>
-          </div><!-- End Stats Item -->
-
-        </div>
-
-      </div>
-
-    </section><!-- /Stats Section -->
-
-
-    <br><br><br><br><br><br><br>
-
-
-    <!-- Clients Section -->
-    <section id="clients" class="section clients">
-
-      <!-- Section Title -->
-      <div class="container section-title" data-aos="fade-up">
-        <h5 class="alert alert-warning" role="alert"><span class="mm5">برخی از نمونه کار های فانتزی تابلو سازی درخشان تابلو</span>
-        </h5>
-        <p class="alert alert-primary" role="alert" align="center">تابلوهای درخشان تابلو  , با نورهای زنده و درخشان خود،
-          جلوه ای خیره‌کننده و چشم‌نواز به محیط می‌بخشند و توجه بینندگان را به خود جلب می‌کنند. طراحی هنرمندانه این
-          تابلوها و ترکیب رنگ‌های ، فضایی جذاب و به یاد ماندنی را ایجاد می‌کند که همگان را به سمت خود کشانده و احساس
-          شادی و هیجان را در آنها برمی‌انگیزد.</p>
-      </div><!-- End Section Title -->
-
-      <div class="container" data-aos="fade-up" data-aos-delay="100">
-
-        <div class="swiper init-swiper">
-          <script type="application/json" class="swiper-config">
-            {
-              "loop": true,
-              "speed": 600,
-              "autoplay": {
-                "delay": 5000
-              },
-              "slidesPerView": "auto",
-              "pagination": {
-                "el": ".swiper-pagination",
-                "type": "bullets",
-                "clickable": true
-              },
-              "breakpoints": {
-                "320": {
-                  "slidesPerView": 2,
-                  "spaceBetween": 40
-                },
-                "480": {
-                  "slidesPerView": 3,
-                  "spaceBetween": 60
-                },
-                "640": {
-                  "slidesPerView": 4,
-                  "spaceBetween": 80
-                },
-                "992": {
-                  "slidesPerView": 6,
-                  "spaceBetween": 120
-                }
-              }
-            }
-          </script>
-          <div class="swiper-wrapper  align-items-center" data-aos="fade-up">
-            <div class="swiper-slide"><img src="assets/img2/neon-sign.jpg" class="img-fluid pi-portfolio" alt=" نمونه کار های خدمات تابلوسازی درخشان تابلو"></div>
-            <div class="swiper-slide"><img src="assets/img2/F3QPU3Fl6H1mUhiB.jpg" class="img-fluid pi-portfolio"alt=" نمونه کار های فانتزی خدمات تابلوسازی درخشان تابلو"></div>
-            <div class="swiper-slide"><img src="assets/img2/5a4c18 (1).jpg" class="img-fluid pi-portfolio" alt=" نمونه کار های خدمات تابلوسازی درخشان تابلو"></div>
-            <div class="swiper-slide"><img src="assets/img2/e3.jpg" width="92" class="img-fluid pi-portfolio" alt=" نمونه کار های خدمات تابلوسازی درخشان تابلو"></div>
-            <div class="swiper-slide"><img src="assets/img2/54815.jpg" class="img-fluid pi-portfolio" alt=" نمونه کار های خدمات تابلوسازی درخشان تابلو"></div>
-            <div class="swiper-slide"><img src="assets/img2/UWGVGrvnxLECLn2xb2SaILFvz95QLcXFegJXpi41buv1WSx3s6.jpg_800X800X70.jpg"class="img-fluid pi-portfolio" alt=" نمونه کار های خدمات تابلوسازی درخشان تابلو"></div>
-            <div class="swiper-slide"><img src="assets/img2/s1.jpg" width="92" class="img-fluid pi-portfolio" alt=" نمونه کار فانتزی های فانتزی خدمات تابلوسازی درخشان تابلو"></div>
-            <div class="swiper-slide"><img src="assets/img2/IMG_2279 (1).jpg"  class="img-fluid pi-portfolio" alt=" نمونه کار های فانتزی خدمات تابلوسازی درخشان تابلو">
-            </div>
-          </div>
-          <div class="swiper-pagination"></div>
-        </div>
-
-      </div>
-      <br>
-      <center><a href="portfolio.html" type="button" class="btn btn-warning">دیدن بیشتر نمونه کارهای درخشان تابلو</a>
-      </center>
-    </section><!-- /Clients Section -->
-    <br><br><br><br><br><br><br><br>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-    <div class="container">
-      <p class="alert alert-primary" role="alert" align="center">لیست زمان تحویل سفارشات ساخت انواع تابلو ها از جمله
-        (چنلیوم
-        , نعون , ال ای دی , روان و........) </p>
-      <br>
-      <hr>
-      <table data-aos="fade-up" class="table table-striped">
-        <thead>
-          <tr>
-            <th style="font-size: 13px;" scope="col">#</th>
-            <th style="font-size: 13px;" scope="col">نوع سفارش #</th>
-            <th style="font-size: 13px;" scope="col">تحویل سفارش #</th>
-            <th style="font-size: 13px;" scope="col">تضمین کیفیت #</th>
-
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <th scope="row">1</th>
-            <td>نعونی</td>
-            <td>حداکثر 1 روز</td>
-            <th scope="col">100%</th>
-
-          </tr>
-          <tr>
-            <th scope="row">2</th>
-            <td>چنلیوم</td>
-            <td>حداکثر 2 روز</td>
-            <th scope="col">100%</th>
-          </tr>
-
-
-          <tr>
-            <th scope="row">3</th>
-            <td>تابلو روان</td>
-            <td>حداکثر 2 روز</td>
-            <th scope="col">100%</th>
-          </tr>
-
-          <tr>
-            <th scope="row">4</th>
-            <td>تابلو روان(رنگی)</td>
-            <td>حداکثر 3 روز</td>
-            <th scope="col">100%</th>
-          </tr>
-
-
-          <tr>
-            <th scope="row">5</th>
-            <td>ال ای دی</td>
-            <td>حداکثر 1 روز</td>
-            <th scope="col">100%</th>
-          </tr>
-
-          <tr>
-            <th scope="row">6</th>
-            <td>نعون(فانتزی)</td>
-            <td>حداکثر 2 روز</td>
-            <th scope="col">100%</th>
-          </tr>
-
-
-          <tr>
-            <th scope="row">7</th>
-            <td>طراحی نما</td>
-            <td>حداکثر 2 روز</td>
-            <th scope="col">100%</th>
-          </tr>
-          <tr>
-            <th scope="row">8</th>
-            <td>نعون فلکسی</td>
-            <td>حداکثر 2 روز</td>
-            <th scope="col">100%</th>
-          </tr>
-
-
-          <tr>
-            <th scope="row">9</th>
-            <td>ال ای دی ثابت</td>
-            <td>حداکثر 1 روز</td>
-            <th scope="col">100%</th>
-          </tr>
-          <tr>
-            <th scope="row">10</th>
-            <td>لایت باکس</td>
-            <td>حداکثر 2 روز</td>
-            <th scope="col">100%</th>
-
-          <tr>
-
-          <tr>
-            <th scope="row">11</th>
-            <td> بنری نوری</td>
-            <td>حداکثر 2 روز</td>
-            <th scope="col">100%</th>
-
-          <tr>
-
-            <th scope="row">12</th>
-            <td>چنلیوم الماسی</td>
-            <td>حداکثر 3 روز</td>
-            <th scope="col">100%</th>
-          </tr>
-        </tbody>
-      </table>
-
-
-
-
-
-
-
-
-      <div class="notification-container" style="display: none;">
-
-      <div class="notification-container " > 
-        <div class="notification-card"> 
-        <div class="notification-header">
-         <h6  style="color: #fff;text-align: center;margin: 0px 0px 0px 40px;"><span>آیا نیاز به مشاوره دارید ؟</span></h6> 
+<body>
+  <div class="notification-container">
+    <div class="notification-card">
+      <div class="notification-header">
+        <h3>New Message</h3>
         <button class="close-btn">×</button>
-         </div>
-        
-         <div class="notification-body">
-         <div class="notification-icon"> 
-        <i class="fas fa-envelope"></i> 
-        </div> 
-        <div class="notification-content"> 
-      <button class="btn btn-success" style="margin: 0px 0px 0px 85px;width: 70px;height: 30px;font-size: 12px;font-family: t_font;">پیام </button>    
-    
-    
-    </div>
-         </div> 
-         </div>
-         </div> 
-        </div> 
-        </div>
-<script>
-
-
-  // انتظار 10 ثانیه
-setTimeout(function() {
-  // نمایش دادن دیو با کلاس "notification-container"
-  document.querySelector('.notification-container').style.display = 'block';
-}, 12000);
-</script>
-
-
-        <script>
-        
-         const closeButton = document.querySelector('.close-btn'); const notificationCard = document.querySelector('.notification-card'); closeButton.addEventListener('click', () => { notificationCard.style.display = 'none'; }); 
-        
-        
-        </script>
-        
-
-
-
-
-
-
-
-
-
-
-
-
-
-      
-
-      <p data-aos="fade-up" class="alert alert-warning" role="alert" align="center"> میانگین تعداد روز های انجام سفارشات
-        شما =1.9</p>
-      <br><br>
-      <p data-aos="fade-up" class="alert alert-danger" align="center" role="alert">توجه داشته باشید که این زمان های نام
-        برده , حداکثر زمان تحویل سفارشات شماست و میتواند زود تر هم نیز تحویل داده شوند</p>
-    </div>
-
-    <br><br><br><br><br><br>
-    <hr>
-
-    <center>
-      <div class="container" data-aos="fade-up">
-
-        <h5 class="alert alert-primary" role="alert"><span class="mm5">دیدگاهتان را بنویسید</span></h5>
-        <p class="alert alert-warning" role="alert">* نشانی ایمیل شما منتشر نخواهد شد. بخش‌های موردنیاز علامت‌گذاری
-          شده‌اند *</p>
-        <br>
-        <div class="col-lg-6">
-          <form action="forms/contact.php" method="post" class="php-email-form" data-aos-delay="400">
-            <div class="row gy-4">
-
-              <div class="col-md-6 " style="border: 4px ">
-                <p>* ایمیل</p>
-
-                <input style="text-align: right;" type="text" name="name" class="form-control" placeholder="* ایمیل"
-                  required="">
-              </div>
-
-              <div class="col-md-6 ">
-                <p>* نام</p>
-
-                <input style="text-align: right;" type="email" class="form-control" name="email" placeholder=" * نام"
-                  required="">
-              </div>
-
-
-
-              <div class="col-md-12">
-                <p>* دیدگاه</p>
-
-                <textarea style="text-align: right;" class="form-control" name="message" rows="6"
-                  placeholder=" * دیدگاه شما " required=""></textarea>
-              </div>
-
-
-
-            </div>
-            <br>
-            <button type="submit" class="btn btn-success">ارسال دیدگاه</button>
-        </div>
-        </form>
-      </div><!-- End Contact Form -->
-
-
       </div>
-    </center>
-    <br><br><br>
-  </main>
 
-  <!-- Site footer -->
-  <footer class="site-footer">
-    <div class="container">
-      <div class="row">
-        <div class="col-sm-12 col-md-6">
-          <h6 class="container" align="right"><span>درباره ما</span></h6>
-          <p align="right" class="text-justify">درخشان تابلو یک مرجع سفارشات و خدمات تابلو سازی در کلانشهر اراک میباشد
-            که با بیش از 20 سال تجربه در این صنعت، به ارائه خدمات طراحی، ساخت، نصب و نگهداری انواع تابلوهای تبلیغاتی،
-            اطلاع رسانی و ........ می پردازد. و همواره خدمات متنوعی را به مشتریان خود اراعه میدهد</p>
+      <div class="notification-body">
+        <div class="notification-icon">
+          <i class="fas fa-envelope"></i>
         </div>
-
-        <div class="col-xs-6 col-md-3">
-          <h6 align="right"><span>خدمات</span></h6>
-          <ul align="right" class="footer-links">
-            <li><a href="http://scanfcode.com/category/c-language/"> ساخت انواع تابلو های تبلیغاتی</a></li>
-            <li><a href="http://scanfcode.com/category/front-end-development/"> ساخت تابلو نعون</a></li>
-            <li><a href="http://scanfcode.com/category/back-end-development/">ساخت تابلو چنلیوم</a></li>
-            <li><a href="http://scanfcode.com/category/java-programming-language/">ساخت تابلو های فانتزی</a></li>
-            <li><a href="http://scanfcode.com/category/android/">ساخت تابلو روان</a></li>
-            <li><a href="http://scanfcode.com/category/templates/">ساخت تابلو ال ای دی</a></li>
-          </ul>
-        </div>
-
-        <div class="col-xs-6 col-md-3">
-          <h6 align="right"><span>لینک های مفید </span></h6>
-          <ul align="right" class="footer-links">
-            <li><i><a href="http://scanfcode.com/about/">صفحه اصلی</a></i></li>
-            <li><i><a href="http://scanfcode.com/contact/">درباره ما</a></i></li>
-            <li><i><a href="http://scanfcode.com/contribute-at-scanfcode/">ارتباط با ما</a></i></li>
-            <li><i><a href="http://scanfcode.com/privacy-policy/">نمونه کار ها</a></i></li>
-            <li><a href="http://scanfcode.com/sitemap/">خدمات</a></li>
-          </ul>
+        <div class="notification-content">
+          <p>You have a new message from John Doe.</p>
+          <p class="time-stamp">2 minutes ago</p>
         </div>
       </div>
-      <hr>
+      <div class="notification-footer">
+        <button class="view-btn">View Message</button>
+      </div>
     </div>
-
-
-
-    <div>
-        <center>
-          <h6><span>ما در شبکه های اجتماعی</span></h6>
-
-<div align="center">
-  <div class="the-icons">
-    <div class="icon">
-       <div class="tel-i" ><a href="true" target="_blank" rel="noopener noreferrer" class="tel-i-1 link-primary"><svg class="niftybutton-telegram tel-svg"  data-donate="true" data-tag="tel" data-name="Telegram" viewBox="0 0 512 512" preserveAspectRatio="xMidYMid meet"><title>Telegram social icon</title>
-<path d="M 200.894531 323.863281 L 192.425781 442.988281 C 204.542969 442.988281 209.792969 437.78125 216.085938 431.53125 L 272.894531 377.238281 L 390.613281 463.445312 C 412.203125 475.476562 427.414062 469.140625 433.238281 443.585938 L 510.507812 81.515625 L 510.527344 81.492188 C 517.375 49.578125 498.988281 37.097656 477.953125 44.929688 L 23.765625 218.816406 C -7.230469 230.847656 -6.761719 248.128906 18.496094 255.957031 L 134.613281 292.074219 L 404.332031 123.308594 C 417.023438 114.902344 428.566406 119.550781 419.070312 127.957031 Z M 200.894531 323.863281 "></path>
-</svg></a></div>
-        <a href="true" target="_blank" rel="noopener noreferrer" class="wh-i link-success">
-            <svg class="niftybutton-whatsapp wh-svg"  data-donate="true" data-tag="wha" data-name="WhatsApp" viewBox="0 0 512 512" preserveAspectRatio="xMidYMid meet">
-                <title>WhatsApp social icon</title>
-                <path d="M469.257812 250.492188 C469.257812 365.242188 375.507812 458.269531 259.839844 458.269531 C223.132812 458.269531 188.652344 448.878906 158.636719 432.4375 L 42.703125 469.257812 L 80.492188 357.746094 C 61.4375 326.449219 50.460938 289.703125 50.460938 250.476562 C 50.476562 135.726562 144.199219 42.703125 259.867188 42.703125 C 375.523438 42.730469 469.257812 135.742188 469.257812 250.492188 Z M259.824219 75.832031 C 162.753906 75.832031 83.789062 154.199219 83.789062 250.535156 C 83.789062 288.757812 96.253906 324.140625 117.324219 352.933594 L 95.347656 417.792969 L 162.976562 396.304688 C 190.792969 414.550781 224.078125 425.179688 259.824219 425.179688 C 356.898438 425.179688 435.886719 346.828125 435.886719 250.492188 C 435.917969 154.199219 356.910156 75.832031 259.824219 75.832031 Z M365.589844 298.355469 C 364.285156 296.253906 360.863281 294.972656 355.742188 292.414062 C 350.636719 289.855469 325.367188 277.546875 320.679688 275.875 C 315.949219 274.164062 312.527344 273.304688 309.105469 278.40625 C 305.726562 283.511719 295.878906 294.972656 292.859375 298.394531 C 289.867188 301.804688 286.878906 302.234375 281.746094 299.71875 C 276.613281 297.128906 260.0625 291.789062 240.449219 274.445312 C 225.191406 260.925781 214.882812 244.273438 211.90625 239.167969 C 208.890625 234.078125 211.601562 231.324219 214.148438 228.792969 C 216.441406 226.5 219.28125 222.839844 221.851562 219.851562 C 224.425781 216.886719 225.273438 214.785156 226.984375 211.378906 C 228.667969 207.972656 227.820312 205.007812 226.554688 202.433594 C 225.273438 199.875 215.023438 174.839844 210.726562 164.644531 C 206.457031 154.460938 202.183594 156.144531 199.179688 156.144531 C 196.191406 156.144531 192.769531 155.726562 189.347656 155.726562 C 185.925781 155.726562 180.363281 156.964844 175.675781 162.070312 C 170.988281 167.175781 157.71875 179.484375 157.71875 204.550781 C 157.71875 229.640625 176.089844 253.832031 178.664062 257.222656 C 181.25 260.605469 214.1875 313.722656 266.363281 334.113281 C 318.5625 354.492188 318.5625 347.691406 327.964844 346.828125 C 337.398438 345.964844 358.34375 334.519531 362.601562 322.640625 C 366.882812 310.707031 366.882812 300.480469 365.589844 298.355469 Z M365.589844 298.355469"></path>
-            </svg>
-        </a>
-
-    <div class="in-i" ><a href="true" target="_blank" rel="noopener noreferrer" class="in-i-1 link-danger"><svg class="niftybutton-instagram in-svg"  data-donate="true" data-tag="ins" data-name="Instagram" viewBox="0 0 512 512" preserveAspectRatio="xMidYMid meet"><title>Instagram social icon</title>
-    <path d="M256 109.3c47.8 0 53.4 0.2 72.3 1 17.4 0.8 26.9 3.7 33.2 6.2 8.4 3.2 14.3 7.1 20.6 13.4 6.3 6.3 10.1 12.2 13.4 20.6 2.5 6.3 5.4 15.8 6.2 33.2 0.9 18.9 1 24.5 1 72.3s-0.2 53.4-1 72.3c-0.8 17.4-3.7 26.9-6.2 33.2 -3.2 8.4-7.1 14.3-13.4 20.6 -6.3 6.3-12.2 10.1-20.6 13.4 -6.3 2.5-15.8 5.4-33.2 6.2 -18.9 0.9-24.5 1-72.3 1s-53.4-0.2-72.3-1c-17.4-0.8-26.9-3.7-33.2-6.2 -8.4-3.2-14.3-7.1-20.6-13.4 -6.3-6.3-10.1-12.2-13.4-20.6 -2.5-6.3-5.4-15.8-6.2-33.2 -0.9-18.9-1-24.5-1-72.3s0.2-53.4 1-72.3c0.8-17.4 3.7-26.9 6.2-33.2 3.2-8.4 7.1-14.3 13.4-20.6 6.3-6.3 12.2-10.1 20.6-13.4 6.3-2.5 15.8-5.4 33.2-6.2C202.6 109.5 208.2 109.3 256 109.3M256 77.1c-48.6 0-54.7 0.2-73.8 1.1 -19 0.9-32.1 3.9-43.4 8.3 -11.8 4.6-21.7 10.7-31.7 20.6 -9.9 9.9-16.1 19.9-20.6 31.7 -4.4 11.4-7.4 24.4-8.3 43.4 -0.9 19.1-1.1 25.2-1.1 73.8 0 48.6 0.2 54.7 1.1 73.8 0.9 19 3.9 32.1 8.3 43.4 4.6 11.8 10.7 21.7 20.6 31.7 9.9 9.9 19.9 16.1 31.7 20.6 11.4 4.4 24.4 7.4 43.4 8.3 19.1 0.9 25.2 1.1 73.8 1.1s54.7-0.2 73.8-1.1c19-0.9 32.1-3.9 43.4-8.3 11.8-4.6 21.7-10.7 31.7-20.6 9.9-9.9 16.1-19.9 20.6-31.7 4.4-11.4 7.4-24.4 8.3-43.4 0.9-19.1 1.1-25.2 1.1-73.8s-0.2-54.7-1.1-73.8c-0.9-19-3.9-32.1-8.3-43.4 -4.6-11.8-10.7-21.7-20.6-31.7 -9.9-9.9-19.9-16.1-31.7-20.6 -11.4-4.4-24.4-7.4-43.4-8.3C310.7 77.3 304.6 77.1 256 77.1L256 77.1z"></path>
-    <path d="M256 164.1c-50.7 0-91.9 41.1-91.9 91.9s41.1 91.9 91.9 91.9 91.9-41.1 91.9-91.9S306.7 164.1 256 164.1zM256 315.6c-32.9 0-59.6-26.7-59.6-59.6s26.7-59.6 59.6-59.6 59.6 26.7 59.6 59.6S288.9 315.6 256 315.6z"></path>
-    <circle cx="351.5" cy="160.5" r="21.5"></circle>
-</svg></a></div>
-    </div>
-</div>
-
-</div>
-
-      </center>
-
-    </div>
-    <br>
-
-    <div class="container">
-      <div class="row">
-        <center>
-          <div class="col-md-8 col-sm-6 col-xs-12">
-
-            <p class="copyright-text">تمامی حقوق و محتوا این وبسایت متعلق به درخشان تابلو میباشد </a></p> &copy;
-
-          </div>
-        </center>
-
-        <div class="container">
-          <div class="row">
-            <center>
-              <div class="col-md-8 col-sm-6 col-xs-12">
-
-                <h6 class="copyright-text"><span> طراح و برنامه نویس سایت = <a href="pr-profile.html" class="link-primary">دیزاین لنز </a></span></h6>
-              </div>
-
-          </div>
-        </div>
-  </footer>
-
-  <!-- Scroll Top -->
-  <a href="#" id="scroll-top" class="scroll-top d-flex align-items-center justify-content-center"><i
-      class="bi bi-arrow-up-short"></i></a>
-
-  <!-- Preloader -->
-  <div id="preloader"></div>
-
-
-
-
-
-
+  </div>
 
   <script>
-    document.getElementById("callBtn2").addEventListener("click", function () {
-      window.location.href = "tel:09010610627";
+    const closeButton = document.querySelector('.close-btn');
+    const notificationCard = document.querySelector('.notification-card');
+
+    closeButton.addEventListener('click', () => {
+      notificationCard.style.display = 'none';
     });
   </script>
-
-
-
-
-
-
-
-
-  <!-- Vendor JS Files -->
-  <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-  <script src="assets/vendor/php-email-form/validate.js"></script>
-  <script src="assets/vendor/aos/aos.js"></script>
-  <script src="assets/vendor/swiper/swiper-bundle.min.js"></script>
-  <script src="assets/vendor/purecounter/purecounter_vanilla.js"></script>
-  <script src="assets/vendor/waypoints/noframework.waypoints.js"></script>
-  <script src="assets/vendor/glightbox/js/glightbox.min.js"></script>
-  <script src="assets/vendor/imagesloaded/imagesloaded.pkgd.min.js"></script>
-  <script src="assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>
-
-  <!-- Main JS File -->
-  <script src="assets/js/main.js"></script>
-
 </body>
-
 </html>
