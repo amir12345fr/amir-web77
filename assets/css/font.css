@@ -134,7 +134,11 @@ top: 5px;
 
 
 
-
+@media (max-width: 360px) {
+  .ft2 {
+    font-size: 11x;
+  }
+}
 
 
 
@@ -279,7 +283,82 @@ p {
 
 }
 
+.my-input-t{
 
+
+  text-align: right;
+
+}
+
+
+
+.my-table1{
+
+  font-size: 13px;
+
+
+}
+
+
+
+
+
+.icon-s{
+
+  position: relative;bottom: "30px;"
+
+}
+
+
+.btn-set{
+
+  margin: 0px 0px 0px 30px;background-color: #e96b56;
+
+}
+
+
+
+
+.img-b-r{
+
+  border-radius: 10px;
+}
+
+
+
+
+.btn-color{
+
+  background-color: #e96b56;
+  color: #fff;
+}
+
+
+.my-s{
+
+  max-width:400px ;position: relative;right: 0px;
+
+}
+
+.color2{
+
+color: #fff;
+
+}
+
+
+.color1{
+
+
+color: #e96b56;
+
+}
+
+.bbc{
+
+color: #e96b56;
+
+}
 
 
 .pi-portfolio{
