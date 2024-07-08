@@ -600,7 +600,7 @@ h6 {
 /*--------------------------------------------------------------
 # Preloader
 --------------------------------------------------------------*/
-.loader {
+#loader {
   display: inline-grid;
   width: 80px;
   aspect-ratio: 1;
@@ -611,7 +611,7 @@ h6 {
    conic-gradient(from 146deg at 50% 1%,#0000, #91492A 2deg 65deg,#0000 68deg)
    -5% 100%/20% 27% repeat-x;
 }
-.loader:before {
+#loader:before {
   content:"";
   animation: inherit;
   animation-name: l6-1;
