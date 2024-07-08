@@ -475,33 +475,26 @@ h6 {
 }
 
 .footer .footer-newsletter .loading {
-  display: none;
-  background: var(--background-color);
-  text-align: center;
-  padding: 15px;
-  margin-top: 10px;
+  --s: 15px;
+  
+  --_d: calc(0.353*var(--s));
+  width: calc(var(--s) + var(--_d));
+  aspect-ratio: 1;
+  display: grid;
+  filter: drop-shadow(0 0 0 #fff);
+  animation: l2 0.8s infinite;
 }
 
 .footer .footer-newsletter .loading:before {
   content: "";
-  display: inline-block;
-  border-radius: 50%;
-  width: 24px;
-  height: 24px;
-  margin: 0 10px -6px 0;
-  border: 3px solid var(--accent-color);
-  border-top-color: var(--background-color);
-  animation: subscription-loading 1s linear infinite;
+  clip-path: polygon(var(--_d) 0,100% 0,100% calc(100% - var(--_d)),calc(100% - var(--_d)) 100%,0 100%,0 var(--_d));
+  background:
+    conic-gradient(from -90deg at var(--s) var(--_d),
+     #fff 135deg,#666 0 270deg,#aaa 0);
 }
 
-@keyframes subscription-loading {
-  0% {
-    transform: rotate(0deg);
-  }
-
-  100% {
-    transform: rotate(360deg);
-  }
+@keyframes l2{
+  50% {filter:drop-shadow(0 0 5px #fff)}
 }
 
 .footer .footer-top {
